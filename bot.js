@@ -12,9 +12,6 @@ client.on("ready", () => {
   console.log("Our bot is ready to go!!!!")
 })
 
-client.on("messageDelete", msg => {
-  msg.channel.send("Stop deleting messages")
-})
 
 client.on("message", msg => {
   if (msg.content == "I love WDS") {
@@ -25,9 +22,5 @@ client.on("message", msg => {
     modUser(msg.member)
   }
 })
-
-function modUser(member) {
-  member.roles.add("783084095223234590")
-}
 
 client.login(process.env.BOT_TOKEN)
