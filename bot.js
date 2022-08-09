@@ -1,17 +1,33 @@
-require('dotenv').config(); //initialize dotenv
-const Discord = require('discord.js'); //import discord.js
+require("dotenv").config()
 
-const client = new Discord.Client(); //create new client
+const Discord = require("discord.js")
+const client = new Discord.Client({
+  partials: ["MESSAGE"]
+})
 
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
-});
+const BOT_PREFIX = "!"
+const MOD_ME_COMMAND = "mod-me"
 
-//make sure this line is the last line
-client.login(process.env.DISCORD_TOKEN); //login bot using token
+client.on("ready", () => {
+  console.log("Our bot is ready to go!!!!")
+})
 
-client.on('message', msg => {
-    if (msg.content === '!ping') {
-      msg.reply('Pong!');
-    }
-  });
+client.on("messageDelete", msg => {
+  msg.channel.send("Stop deleting messages")
+})
+
+client.on("message", msg => {
+  if (msg.content == "I love WDS") {
+    msg.react("❤️")
+  }
+
+  if (msg.content === `${BOT_PREFIX}${MOD_ME_COMMAND}`) {
+    modUser(msg.member)
+  }
+})
+
+function modUser(member) {
+  member.roles.add("783084095223234590")
+}
+
+client.login(process.env.BOT_TOKEN)
