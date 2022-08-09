@@ -18,8 +18,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
        
         args = args.splice(1);
         switch(cmd) {
-            // !ping
-            case 'ping':
+            // !pinga
+            case 'pinga':
                 bot.sendMessage({
                     to: channelID,
                     message: 'Pong!'
