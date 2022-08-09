@@ -1,3 +1,5 @@
+console.log('starting bot');
+
 var Discord = require('discord.io');
 
 // Initialize Discord Bot
