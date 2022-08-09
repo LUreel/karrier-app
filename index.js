@@ -3,7 +3,7 @@ const path = require('node:path');
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
 
 
-console.log(DISCORD_TOKEN);
+console.log(process.env.DISCORD_TOKEN);
 
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
@@ -38,4 +38,4 @@ client.on('interactionCreate', async interaction => {
 	}
 });
 
-client.login(DISCORD_TOKEN);
+client.login(process.env.DISCORD_TOKEN);
